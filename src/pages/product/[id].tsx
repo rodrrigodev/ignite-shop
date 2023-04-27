@@ -16,16 +16,16 @@ interface ProductProps{
 }
 
 export default function Product({ product }: ProductProps){
-  const { isFallback } = useRouter()
+  const {isFallback} = useRouter()
 
   if(isFallback){
-    return <p>Loading...</p>
+    return <p>Loading</p>
   }
 
     return(
       <ProductContainer>
         <ImageContainer>
-            <Image src={product.imageUrl} width={520} height={480} alt=""/>
+            <Image src={product.imageUrl} width={520} height={480} alt="" />
         </ImageContainer>
 
         <ProductDetails>
