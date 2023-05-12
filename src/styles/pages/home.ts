@@ -10,7 +10,7 @@ export const HomeContainer = styled('main',{
     minHeight: 656
 })
 
-export const Product = styled(Link,{
+export const Product = styled("div",{
 background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
 borderRadius: 8,
 // padding: '0.25rem',
@@ -23,6 +23,11 @@ display: 'flex',
 alignItems: "center",
 justifyContent: "center",
 
+a: {
+    width: '100%',
+    display: 'block',
+},
+
 img: {
     objectFit: "cover",
 },
@@ -33,18 +38,22 @@ footer: {
     left: '0.25rem',
     right: '0.25rem',
     padding: '2rem',
-
-    borderRadius: 6,
-    
-    display: 'flex',
-    alignItems: "center",
-    justifyContent: "space-between",
-
     backgroundColor: 'rgb(0, 0, 0, 0.6)',
+    borderRadius: 6,
 
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
+
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    div: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.25rem'
+    },
 
     strong: {
         fontSize: '$lg',
@@ -55,6 +64,23 @@ footer: {
         fontSize: '$xl',
         fontWeight: 'bold',
         color: '$green300'
+    },
+
+    button: {
+        border: 0,
+        padding: '0.75rem',
+        borderRadius: 6,
+        color: '$white',
+        backgroundColor: '$green500',
+        transition: 'all 500ms',
+
+        display: 'flex',
+        alignItems: 'center',
+        
+        '&:hover': {
+            backgroundColor: '$green300',
+            transition: 'all 500ms',
+        }
     }
 },
 

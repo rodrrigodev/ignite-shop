@@ -29,7 +29,6 @@ export default function Product({ product }: ProductProps){
        const response = await axios.post('/api/checkout',{
          priceId: product.defaultPriceId,
         })
-        console.log('click')
 
         const { checkoutUrl } = response.data
 

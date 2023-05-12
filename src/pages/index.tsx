@@ -7,6 +7,8 @@ import { stripe } from "../lib/stripe"
 import { GetStaticProps } from "next"
 import Stripe from "stripe"
 import Head from "next/head"
+import { Handbag } from "@phosphor-icons/react";
+import Link from "next/link"
 
 interface HomeProps{
    products:{ 
@@ -34,11 +36,20 @@ export default function Home({products}: HomeProps) {
   <HomeContainer ref={sliderRefer} className='keen-slider'>
         {products.map((product)=>{
             return (
-                <Product href={`/product/${product.id}`}  key={product.id} className='keen-slider__slide' prefetch={false}>
-                        <Image src={product.imageUrl} width={520} height={480} alt=""/>
+                <Product key={product.id} className='keen-slider__slide'>
+                        <Link href={`/product/${product.id}`} prefetch={false}>
+                            <Image src={product.imageUrl} width={520} height={480} alt=""/>
+                        </Link>
+
                         <footer>
-                        <strong>{product.name}</strong>
-                        <span>{product.price}</span>
+                         <div>
+                            <strong>{product.name}</strong>
+                            <span>{product.price}</span>
+                         </div>
+
+                         <button>
+                            <Handbag size={32} />
+                         </button>
                         </footer>
                 </Product>
             )
