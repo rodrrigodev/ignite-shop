@@ -9,6 +9,7 @@ import Stripe from "stripe"
 import Head from "next/head"
 import { Handbag } from "@phosphor-icons/react";
 import Link from "next/link"
+import React from 'react'
 
 interface HomeProps{
    products:{ 
@@ -17,14 +18,15 @@ interface HomeProps{
     imageUrl: string,
     price: string,
     }[]
-}
+} 
 
 export default function Home({products}: HomeProps) {
-    const [sliderRefer] = useKeenSlider({
+    const [sliderRefer] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 3,
             spacing: 48
-        }
+        },
+     
     })
 
  return(
@@ -36,7 +38,7 @@ export default function Home({products}: HomeProps) {
   <HomeContainer ref={sliderRefer} className='keen-slider'>
         {products.map((product)=>{
             return (
-                <Product key={product.id} className='keen-slider__slide'>
+                <Product key={product.id} className={`keen-slider__slide`}>
                         <Link href={`/product/${product.id}`} prefetch={false}>
                             <Image src={product.imageUrl} width={520} height={480} alt=""/>
                         </Link>
