@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react"
+import { createContext, useState, ReactNode, useContext } from "react"
 
 interface CartContextType {
     products: string[],
@@ -12,14 +12,18 @@ interface CartContextProviderProps{
 export const CartContext = createContext({} as CartContextType)
 
 export default function CartContextProvider({ children }:CartContextProviderProps){
-    const [ products, setProducts] = useState<string[]>([])
+    const [ products, setProducts] = useState<string[]>(['teste'])
 
     function handlerAddProduct(idToAdd: string){
         const idExistInCart = products.find((id)=>{
             return id === idToAdd
         })
 
-        setProducts((state) => [...state, idToAdd])
+        if(!idExistInCart){
+            setProducts((state) => [...state, idToAdd])
+        }else{
+            console.log('criar alerta já add ao carrinho')
+        }
     }
 
     return(
@@ -27,4 +31,9 @@ export default function CartContextProvider({ children }:CartContextProviderProp
             {children}
         </CartContext.Provider>
     )
+}
+
+export function useCart(){
+    const cart = useContext(CartContext)
+    return cart
 }

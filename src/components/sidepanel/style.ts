@@ -34,5 +34,9 @@ export const SidePanelContainer = styled('div', {
         width: 0,
       }
     }
+  },
+
+  p:{
+    color: '$white'
   }
 })

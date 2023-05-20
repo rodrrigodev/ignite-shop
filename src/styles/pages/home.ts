@@ -23,11 +23,6 @@ display: 'flex',
 alignItems: "center",
 justifyContent: "center",
 
-a: {
-    width: '100%',
-    display: 'block',
-},
-
 img: {
     objectFit: "cover",
 },
@@ -90,10 +85,4 @@ footer: {
         opacity: 1,
     }
 }
-})
-
-
-export const Divvvvv = styled("div",{
-    background: 'red',
-    position: 'fixed'
 })

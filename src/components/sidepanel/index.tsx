@@ -1,3 +1,4 @@
+import { useCart } from "../../hook/useCart";
 import { SidePanelContainer } from "./style";
 
 interface SidePanelProps{
@@ -5,9 +6,12 @@ interface SidePanelProps{
 }
 
 export default function Sidepanel({ opening }: SidePanelProps){
+  const {handlerAddProduct, products} = useCart()
+
     return(
         <SidePanelContainer opening= {opening}>
-            <h1>Sidpanel</h1>
+            <h1 onClick={()=>{ handlerAddProduct('if')}}>Sidpanel</h1>
+            <p>{products[0]}</p>
         </SidePanelContainer>
     )
 }
