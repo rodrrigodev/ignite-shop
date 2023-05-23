@@ -17,16 +17,4 @@ export const Header = styled('header', {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-
-    button:{
-        border: 0,
-        padding: '0.75rem',
-        color: '#8D8D99',
-        backgroundColor: '$gray800',
-        borderRadius: 6,
-
-        display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer',
-    }
 })

@@ -7,24 +7,22 @@ import { Handbag } from "@phosphor-icons/react";
 import { useState } from "react";
 import Sidepanel from "../components/sidepanel";
 import CartContextProvider from "../hook/useCart";
+import { ButtonCart } from "../components/buttonCart";
 
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [sidepanelOpening, setSidepanlOpening] = useState(false)
   return(
     <CartContextProvider>
       <Container>
         <Header>
           <Image src={logoImg} alt=""/>
 
-          <button onClick={()=> setSidepanlOpening(!sidepanelOpening)}>
-           <Handbag size={32} />
-          </button>
+        <ButtonCart />
 
         </Header>
 
-        <Sidepanel opening={sidepanelOpening}/>
+        <Sidepanel opening={false}/>
 
         <Component {...pageProps} /> 
       </Container>
