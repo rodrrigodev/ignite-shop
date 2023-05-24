@@ -17,4 +17,9 @@ export const Header = styled('header', {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    
+    "@media only screen and (max-width: 1200px)": {
+        marginLeft: '1rem',
+        maxWidth: '99%',
+      }
 })

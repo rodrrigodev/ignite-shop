@@ -3,8 +3,6 @@ import { globalStyles } from "../styles/global";
 import logoImg from '../assets/logo.svg'
 import { Container, Header } from "../styles/pages/app";
 import Image from "next/image";
-import { Handbag } from "@phosphor-icons/react";
-import { useState } from "react";
 import Sidepanel from "../components/sidepanel";
 import CartContextProvider from "../hook/useCart";
 import { ButtonCart } from "../components/buttonCart";
@@ -22,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         </Header>
 
-        <Sidepanel opening={false}/>
+        <Sidepanel/>
 
         <Component {...pageProps} /> 
       </Container>

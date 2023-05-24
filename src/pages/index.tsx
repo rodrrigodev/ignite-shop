@@ -18,7 +18,7 @@ interface HomeProps{
     imageUrl: string,
     price: string,
     }[]
-} 
+}  
 
 export default function Home({products}: HomeProps) {
     const [sliderRefer] = useKeenSlider<HTMLDivElement>({
@@ -26,7 +26,20 @@ export default function Home({products}: HomeProps) {
             perView: 3,
             spacing: 48
         },
-     
+     breakpoints:{
+        '(max-width: 1200px)':{
+            slides:{
+                perView: 2,
+                spacing: 48
+            }
+        },
+        '(max-width: 768px)':{
+            slides:{
+                perView: 1,
+                spacing: 30
+            }
+        }
+     }
     })
 
  return(
