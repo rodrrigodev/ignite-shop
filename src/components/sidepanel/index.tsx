@@ -16,14 +16,20 @@ export default function Sidepanel(){
              <h1>Sacola de Compras</h1>
             </CartHeader>
 
-                <ProductDescription>
-                    <img src={imagem.src} alt="" />
+            {
+                products.map((product)=>{
+                    return(
+                        <ProductDescription key={product.id}>
+                    <img src={product.imageUrl} alt="" />
                     <div>
-                        <h2>Camiseta Ignite Lab</h2>
-                        <span>R$ 70,00</span>
+                        <h2>{product.name}</h2>
+                        <span>{product.price}</span>
                         <button>Remover</button>
                     </div>
                 </ProductDescription>
+                    )
+                })
+            }
             
             </div>
 

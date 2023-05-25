@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import axios from "axios"
 import { useState } from "react"
 import Head from "next/head"
+import { useCart } from "../../hook/useCart"
 
 interface ProductProps{
   product:{ 
@@ -21,13 +22,16 @@ interface ProductProps{
 
 export default function Product({ product }: ProductProps){
   const [isCreatingCheckoutSession, setIsCrearingCheckoutSession] = useState(false)
-
+  const { handlerAddProduct } = useCart()
+  const { name, id, imageUrl, price, defaultPriceId } = product
+  const productToAdd = {name, id, imageUrl, price, defaultPriceId}
+  
   async function handleByuProduct(){
     try{
       setIsCrearingCheckoutSession(true)
       
        const response = await axios.post('/api/checkout',{
-         priceId: product.defaultPriceId,
+         priceId: [product.defaultPriceId],
         })
 
         const { checkoutUrl } = response.data
@@ -64,7 +68,7 @@ export default function Product({ product }: ProductProps){
 
              <p>{product.description}</p>
 
-             <button onClick={handleByuProduct} disabled={isCreatingCheckoutSession}>
+             <button onClick={()=> handlerAddProduct(productToAdd)} disabled={isCreatingCheckoutSession}>
                  Comprar agora
              </button>
          </ProductDetails>

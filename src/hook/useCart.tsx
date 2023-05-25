@@ -1,8 +1,16 @@
 import { createContext, useState, ReactNode, useContext } from "react"
 
+interface ProductProps{
+    name: string,
+    id: string,
+    imageUrl: string,
+    price: string,
+    defaultPriceId: string
+}
+
 interface CartContextType {
-    products: string[],
-    handlerAddProduct: (id: string)=> void,
+    products: ProductProps[],
+    handlerAddProduct: (productToAdd: ProductProps)=> void,
     handlerSidePanelIsOpening: (opening: boolean)=> void,
     sidePanelIsOpening: boolean,
 }
@@ -14,16 +22,16 @@ interface CartContextProviderProps{
 export const CartContext = createContext({} as CartContextType)
 
 export default function CartContextProvider({ children }:CartContextProviderProps){
-    const [ products, setProducts] = useState<string[]>(['teste'])
+    const [ products, setProducts] = useState<ProductProps[]>([])
     const [ sidePanelIsOpening, setSidePanelIsOpening] = useState(false)
 
-    function handlerAddProduct(idToAdd: string){
-        const idExistInCart = products.find((id)=>{
-            return id === idToAdd
+    function handlerAddProduct(productToAdd: ProductProps){
+        const productExistInCart = products.find((product)=>{
+            return product.id === productToAdd.id
         })
 
-        if(!idExistInCart){
-            setProducts((state) => [...state, idToAdd])
+        if(!productExistInCart){
+            setProducts((state) => [...state, productToAdd])
         }else{
             console.log('criar alerta já add ao carrinho')
         }
