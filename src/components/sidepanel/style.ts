@@ -19,7 +19,11 @@ export const SidePanelContainer = styled("div", {
   variants: {
     opening: {
       true: {
-        width: "30%",
+        width: "45%",
+
+        // '@media (max-width: 1200px)':{
+        //   width: "50%",
+        // }
       },
       false: {
         width: "0",

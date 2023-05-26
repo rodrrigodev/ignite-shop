@@ -10,6 +10,7 @@ import Head from "next/head"
 import { Handbag } from "@phosphor-icons/react";
 import Link from "next/link"
 import React from 'react'
+import { useCart } from "../hook/useCart"
 
 interface HomeProps{
    products:{ 
@@ -43,6 +44,9 @@ export default function Home({products}: HomeProps) {
      }
     })
 
+  const { handlerAddProduct } = useCart()
+
+
  return(
     <>
     <Head>
@@ -51,6 +55,9 @@ export default function Home({products}: HomeProps) {
 
   <HomeContainer ref={sliderRefer} className='keen-slider'>
         {products.map((product)=>{
+             const { name, id, imageUrl, price, priceId } = product
+             const productToAdd = { name, id, imageUrl, price, defaultPriceId: priceId }
+
             return (
                 <Product key={product.id} className={`keen-slider__slide`}>
                         <Link href={`/product/${product.id}`} prefetch={false}>
@@ -63,7 +70,7 @@ export default function Home({products}: HomeProps) {
                             <span>{product.price}</span>
                          </div>
 
-                         <button>
+                         <button onClick={()=> handlerAddProduct(productToAdd)}>
                             <Handbag size={32} />
                          </button>
                         </footer>

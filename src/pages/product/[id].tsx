@@ -21,29 +21,15 @@ interface ProductProps{
 }
 
 export default function Product({ product }: ProductProps){
-  const [isCreatingCheckoutSession, setIsCrearingCheckoutSession] = useState(false)
-  const { handlerAddProduct } = useCart()
-  const { name, id, imageUrl, price, defaultPriceId } = product
-  const productToAdd = {name, id, imageUrl, price, defaultPriceId}
-  
-  async function handleByuProduct(){
-    try{
-      setIsCrearingCheckoutSession(true)
-      
-       const response = await axios.post('/api/checkout',{
-         priceId: [product.defaultPriceId],
-        })
+  const { handlerAddProduct, products } = useCart()
 
-        const { checkoutUrl } = response.data
+  const productExistInCart = products.find((shirt)=> {return shirt.id === product.id})
 
-        window.location.href =  checkoutUrl
-    } catch (err){
-      //conectar com uma ferramenta de observabilidade (Datadog / Sentry)
-      console.log(err)
-      setIsCrearingCheckoutSession(false)
+  function handlerAddNewProduct(){
+    const { name, id, imageUrl, price, defaultPriceId } = product
+    const productToAdd = { name, id, imageUrl, price, defaultPriceId }
 
-      alert('Falha ao redirecionar!')
-    }
+    handlerAddProduct(productToAdd)
   }
 
   const {isFallback} = useRouter()
@@ -68,7 +54,7 @@ export default function Product({ product }: ProductProps){
 
              <p>{product.description}</p>
 
-             <button onClick={()=> handlerAddProduct(productToAdd)} disabled={isCreatingCheckoutSession}>
+             <button onClick={()=> handlerAddNewProduct()} disabled={!!productExistInCart}>
                  Comprar agora
              </button>
          </ProductDetails>
