@@ -6,8 +6,9 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function Sidepanel(){
-  const { products, sidePanelIsOpening, handlerSidePanelIsOpening } = useCart()
+  const { products, sidePanelIsOpening, handlerSidePanelIsOpening, handleRemoveProduct } = useCart()
   const [isCreatingCheckoutSession, setIsCrearingCheckoutSession] = useState(false)
+  
   const totalFormat = products.map((product)=>{return Number(product.price.slice(2).replace(',', '.'))})
   const total = products.length ?  new Intl.NumberFormat('pt-BR',{style: 'currency',currency: 'BRL',}).
   format(totalFormat.reduce((acc, cur)=>{ return acc + cur })) : 0
@@ -50,7 +51,7 @@ export default function Sidepanel(){
                     <div>
                         <h2>{product.name}</h2>
                         <span>{product.price}</span>
-                        <button>Remover</button>
+                        <button onClick={()=> handleRemoveProduct(product.id)}>Remover</button>
                     </div>
                         </ProductDescription>
                     )

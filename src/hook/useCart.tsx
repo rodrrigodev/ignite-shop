@@ -12,6 +12,7 @@ interface CartContextType {
     products: ProductProps[],
     handlerAddProduct: (productToAdd: ProductProps)=> void,
     handlerSidePanelIsOpening: (opening: boolean)=> void,
+    handleRemoveProduct: (id: string)=> void,
     sidePanelIsOpening: boolean,
 }
 
@@ -41,8 +42,14 @@ export default function CartContextProvider({ children }:CartContextProviderProp
         setSidePanelIsOpening(opening)
     }
 
+    function handleRemoveProduct(id: string){
+        setProducts((state)=> state.filter((product)=>{
+            return product.id !== id
+        }))
+    }
+
     return(
-        <CartContext.Provider value={{products, handlerAddProduct, handlerSidePanelIsOpening, sidePanelIsOpening}}>
+        <CartContext.Provider value={{products, handlerAddProduct, handlerSidePanelIsOpening, sidePanelIsOpening, handleRemoveProduct}}>
             {children}
         </CartContext.Provider>
     )
