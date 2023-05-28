@@ -1,9 +1,9 @@
 import { X } from "@phosphor-icons/react";
 import { useCart } from "../../hook/useCart";
 import { CartHeader, PriceContainer, ProductDescription, SidePanelContainer } from "./style";
-import imagem from '../../assets/camisetas/2.png'
 import axios from "axios";
 import { useState } from "react";
+import { formatPriceId } from "../../utils/formatPriceId";
 
 export default function Sidepanel(){
   const { products, sidePanelIsOpening, handlerSidePanelIsOpening, handleRemoveProduct } = useCart()
@@ -15,10 +15,12 @@ export default function Sidepanel(){
 
   async function handleByuProduct(){
     try{
+        console.log('eb')
       setIsCrearingCheckoutSession(true)
       
-       const response = await axios.post('/api/checkout',{
-         priceId: [product.defaultPriceId],
+    //    const response = await axios.post("../..pages/api/checkout",{
+        const response = await axios.post('/api/checkout',{
+         priceId: formatPriceId(products)
         })
 
         const { checkoutUrl } = response.data
@@ -70,7 +72,7 @@ export default function Sidepanel(){
                     <span>Valor Total</span>
                     <span>{total}</span>
                 </div>
-                <button>Finalizar Compra</button>
+                <button onClick={()=> handleByuProduct()}>Finalizar Compra</button>
             </PriceContainer>
         </SidePanelContainer>
     )

@@ -14,16 +14,12 @@ export const SidePanelContainer = styled("div", {
   right: 0,
   backgroundColor: "$gray800",
   overflow: "hidden",
-  transition: "0.5s",
+  transition: "0.8s",
 
   variants: {
     opening: {
       true: {
         width: "45%",
-
-        // '@media (max-width: 1200px)':{
-        //   width: "50%",
-        // }
       },
       false: {
         width: "0",
@@ -109,6 +105,7 @@ export const ProductDescription = styled("div", {
     border: 0,
     alignSelf: "flex-start",
     transition: "all 500ms",
+    cursor: "pointer",
 
     "&:hover": {
       transition: "all 500ms",
@@ -168,6 +165,8 @@ export const PriceContainer =  styled("div", {
     borderRadius: 8,
     marginTop: "3.5rem",
     transition: "all 500ms",
+    cursor: "pointer",
+    overflow: "hidden",
 
     "&:hover": {
       transition: "all 500ms",
