@@ -22,7 +22,7 @@ interface HomeProps{
     }[]
 }  
 
-export default function Home({products}: HomeProps) {
+export default function Home({ products }: HomeProps) {
     const [sliderRefer] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 3,
@@ -44,7 +44,7 @@ export default function Home({products}: HomeProps) {
      }
     })
 
-  const { handlerAddProduct } = useCart()
+  const { handlerAddProduct, products: productCart } = useCart()
 
 
  return(
@@ -57,6 +57,7 @@ export default function Home({products}: HomeProps) {
         {products.map((product)=>{
              const { name, id, imageUrl, price, priceId } = product
              const productToAdd = { name, id, imageUrl, price, defaultPriceId: priceId }
+             const buttonDisabled = productCart.length >= 3 ? true : false
 
             return (
                 <Product key={product.id} className={`keen-slider__slide`}>
@@ -70,7 +71,7 @@ export default function Home({products}: HomeProps) {
                             <span>{product.price}</span>
                          </div>
 
-                         <button onClick={()=> handlerAddProduct(productToAdd)}>
+                         <button onClick={()=> handlerAddProduct(productToAdd)} disabled={buttonDisabled}>
                             <Handbag size={32} />
                          </button>
                         </footer>

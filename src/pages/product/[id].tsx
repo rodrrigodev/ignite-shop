@@ -55,7 +55,7 @@ export default function Product({ product }: ProductProps){
              <p>{product.description}</p>
 
              <button onClick={()=> handlerAddNewProduct()} disabled={!!productExistInCart}>
-                 Comprar agora
+                 Adicionar a Sacola
              </button>
          </ProductDetails>
        </ProductContainer>

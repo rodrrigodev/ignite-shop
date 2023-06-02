@@ -13,20 +13,20 @@ export const HomeContainer = styled('main',{
 })
 
 export const Product = styled("div",{
-background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-borderRadius: 8,
-// padding: '0.25rem',
-cursor: 'pointer',
+    background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+    borderRadius: 8,
+    // padding: '0.25rem',
+    cursor: 'pointer',
 
-display: 'flex',
-alignItems: "center",
-justifyContent: "center",
+    display: 'flex',
+    alignItems: "center",
+    justifyContent: "center",
 
-img: {
-    objectFit: "contain",
-},
+    img: {
+        objectFit: "contain",
+    },
 
-footer: {
+    footer: {
     position: "absolute",
     bottom: '0.25rem',
     left: '0.25rem',
@@ -67,21 +67,28 @@ footer: {
         color: '$white',
         backgroundColor: '$green500',
         transition: 'all 500ms',
+        cursor: "pointer",
 
         display: 'flex',
         alignItems: 'center',
         
-        '&:hover': {
+        '&:not(:disabled):hover': {
             backgroundColor: '$green300',
             transition: 'all 500ms',
-        }
-    }
-},
+        },
 
-'&:hover': {
+        '&:disabled': {
+            cursor: 'not-allowed',
+        }
+
+
+    }
+    },
+
+    '&:hover': {
     footer: {
         transform: 'translateY(0%)',
         opacity: 1,
     }
-}
+    }
 })
