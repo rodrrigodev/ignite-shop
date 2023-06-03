@@ -6,10 +6,6 @@ export const HomeContainer = styled('main',{
     maxWidth: 'calc(100vw - ((100vw - 1180px) / 2))',
     marginLeft: 'auto',
     minHeight: '41rem',
-
-    "@media only screen and (max-width: 1200px)": {
-        marginLeft: '1rem',
-      }
 })
 
 export const Product = styled("div",{
@@ -23,7 +19,12 @@ export const Product = styled("div",{
     justifyContent: "center",
 
     img: {
+        height: 700,
         objectFit: "contain",
+
+        '@media (max-width: 350px)': {
+            height: 350
+          }
     },
 
     footer: {
@@ -80,8 +81,6 @@ export const Product = styled("div",{
         '&:disabled': {
             cursor: 'not-allowed',
         }
-
-
     }
     },
 

@@ -1,9 +1,11 @@
 import { X } from "@phosphor-icons/react";
 import { useCart } from "../../hook/useCart";
-import { CartHeader, PriceContainer, ProductDescription, SidePanelContainer } from "./style";
+import { CartHeader, EmptyBag, PriceContainer, ProductDescription, SidePanelContainer } from "./style";
 import axios from "axios";
 import { useState } from "react";
 import { formatPriceId } from "../../utils/formatPriceId";
+import bag from "../../assets/bag.svg"
+import Image from "next/image";
 
 export default function Sidepanel(){
   const { products, sidePanelIsOpening, handlerSidePanelIsOpening, handleRemoveProduct } = useCart()
@@ -15,7 +17,6 @@ export default function Sidepanel(){
 
   async function handleByuProduct(){
     try{
-        console.log('eb')
       setIsCrearingCheckoutSession(true)
       
     //    const response = await axios.post("../..pages/api/checkout",{
@@ -62,7 +63,9 @@ export default function Sidepanel(){
             
             </div>
 
-            <PriceContainer>
+            {
+                !!products.length && 
+                <PriceContainer>
                 <div>
                     <span>Quantidade</span>
                     <span>{products.length} itens</span>
@@ -74,6 +77,15 @@ export default function Sidepanel(){
                 </div>
                 <button onClick={()=> handleByuProduct()}>Finalizar Compra</button>
             </PriceContainer>
+            }
+
+            { 
+                !products.length && 
+                <EmptyBag>
+                    <Image src={bag} alt="" width={300} height={300} />
+                    <p>Parece que seu carrinho está <br/> um pouco vazio no momento!</p>
+                </EmptyBag>
+            }
         </SidePanelContainer>
     )
 }

@@ -6,6 +6,7 @@ export const Container = styled('div', {
     alignItems: 'flex-start',
     justifyContent: 'center',
     minHeight: '100vh',
+    padding: "2rem"
 })
 
 export const Header = styled('header', {
@@ -17,9 +18,9 @@ export const Header = styled('header', {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    
-    "@media only screen and (max-width: 1200px)": {
-        marginLeft: '1rem',
-        maxWidth: '99%',
-      }
+
+    img: {
+        maxWidth: 130,
+        width: "100%"
+    }
 })

@@ -174,3 +174,21 @@ export const PriceContainer =  styled("div", {
     }
   }
 })
+
+export const EmptyBag = styled("div",{
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  position: "relative",
+  top: "-15%",
+
+  p: {
+    fontSize: "1.5rem"
+  },
+
+  img: {
+    maxWidth: "18.75rem",
+    width: "100%"
+  }
+
+})

@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <CartContextProvider>
       <Container>
         <Header>
-          <Image src={logoImg} alt=""/>
+          <Image src={logoImg} alt="" width={130} height={52}/>
 
         <ButtonCart />
 

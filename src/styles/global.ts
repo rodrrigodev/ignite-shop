@@ -22,7 +22,7 @@ export const globalStyles = globalCss({
 
         '@media (max-width: 1200px)':{
           html:{
-            fontSize: '87.5%'
+            fontSize: '80%'
           }
         }
 })
