@@ -20,6 +20,13 @@ export const SidePanelContainer = styled("div", {
     opening: {
       true: {
         width: "45%",
+        '@media (max-width: 956px)':{
+            width: '60%',
+          },
+
+          '@media (max-width: 720px)':{
+            width: '100%',
+          },
       },
       false: {
         width: "0",
@@ -28,7 +35,7 @@ export const SidePanelContainer = styled("div", {
   },
 
   "> div": {
-    padding: "4.5rem 3rem 3rem 3rem",
+    padding: "3rem 2rem 1rem",
   },
   
   whiteSpace: "nowrap"
@@ -77,27 +84,27 @@ export const ProductDescription = styled("div", {
   },
 
   img: {
-    maxWidth: "10rem",
+    maxWidth: "5rem",
     width: "100%",
     borderRadius: 8,
     background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   },
 
   h2: {
-    fontSize: "1.125rem",
+    fontSize: "1.2rem",
     color: "$gray300",
     lineHeight: 1.6,
   },
 
   span: {
-    fontSize: "1.125rem",
+    fontSize: "1.2rem",
     fontWeight: 700,
     lineHeight: 1.6,
     color: "$gray100"
   },
 
   button: {
-    fontSize: "1.125rem",
+    fontSize: "1.2rem",
     fontWeight: 700,
     lineHeight: 1.6,
     color: "$green500",
@@ -163,7 +170,7 @@ export const PriceContainer =  styled("div", {
     backgroundColor: "$green500",
     border: 0,
     borderRadius: 8,
-    marginTop: "3.5rem",
+    marginTop: "2.5rem",
     transition: "all 500ms",
     cursor: "pointer",
     overflow: "hidden",
