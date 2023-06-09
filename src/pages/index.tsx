@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { HomeContainer, Product } from "../styles/pages/home"
+import { ButtonNext, HomeContainer, Product } from "../styles/pages/home"
 import {useKeenSlider} from 'keen-slider/react'
 
 import 'keen-slider/keen-slider.min.css'
@@ -7,10 +7,10 @@ import { stripe } from "../lib/stripe"
 import { GetStaticProps } from "next"
 import Stripe from "stripe"
 import Head from "next/head"
-import { Handbag } from "@phosphor-icons/react";
+import { CaretRight, Handbag } from "@phosphor-icons/react";
 import Link from "next/link"
-import React from 'react'
 import { useCart } from "../hook/useCart"
+import { useState } from "react"
 
 interface HomeProps{
    products:{ 
@@ -23,7 +23,8 @@ interface HomeProps{
 }  
 
 export default function Home({ products }: HomeProps) {
-    const [sliderRefer] = useKeenSlider<HTMLDivElement>({
+    const [disabledBtn, setDisabledBtn] = useState(true)
+    const [sliderRefer, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 3,
             spacing: 48
@@ -46,14 +47,13 @@ export default function Home({ products }: HomeProps) {
 
   const { handlerAddProduct, products: productCart } = useCart()
 
-
  return(
     <>
     <Head>
         <title>Home | Ignite Shop</title>
     </Head>
 
-  <HomeContainer ref={sliderRefer} className='keen-slider'>
+  <HomeContainer ref={sliderRefer} className='keen-slider' >
         {products.map((product)=>{
              const { name, id, imageUrl, price, priceId } = product
              const productToAdd = { name, id, imageUrl, price, defaultPriceId: priceId }
@@ -78,7 +78,16 @@ export default function Home({ products }: HomeProps) {
                 </Product>
             )
         })}
-  </HomeContainer>
+
+        {
+            disabledBtn &&
+            <ButtonNext onClick={()=> {setDisabledBtn(false), instanceRef.current.next()}}>
+             <button>
+                <CaretRight size={32} />
+             </button>
+            </ButtonNext>
+        }
+    </HomeContainer>
   </>
  )
 }

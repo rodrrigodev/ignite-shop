@@ -19,11 +19,12 @@ export const Product = styled("div",{
     justifyContent: "center",
 
     img: {
-        height: 700,
+        height: 500,
         objectFit: "contain",
+        marginBottom: "4.5rem",
 
         '@media (max-width: 350px)': {
-            height: 350
+            height: 400
           }
     },
 
@@ -43,6 +44,11 @@ export const Product = styled("div",{
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+
+    '@media (max-width: 768px)': {
+        transform: 'translateY(0%)',
+        opacity: 1,
+      },
 
     div: {
         display: 'flex',
@@ -89,5 +95,25 @@ export const Product = styled("div",{
         transform: 'translateY(0%)',
         opacity: 1,
     }
+    }
+})
+
+
+export const ButtonNext = styled("div",{
+    position: "absolute",
+    right: 0,
+    maxWidth: "4.5rem",
+    width: "100%",
+    height: "100%",
+    background: "linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(18, 18, 20, 0.75) 100%)",
+    display: "flex",
+    alignItems: "center",
+
+    button: {
+        // position: "relative",
+        left: "4.5rem",
+        backgroundColor: "transparent",
+        color: "$white",
+        border: 0,
     }
 })
