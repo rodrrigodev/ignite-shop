@@ -100,6 +100,7 @@ export const Product = styled("div",{
 
 
 export const ButtonNext = styled("div",{
+    cursor: "pointer",
     position: "absolute",
     right: 0,
     maxWidth: "4.5rem",
@@ -110,8 +111,9 @@ export const ButtonNext = styled("div",{
     alignItems: "center",
 
     button: {
-        // position: "relative",
-        left: "4.5rem",
+        position: "relative",
+        cursor: "pointer",
+        left: "1.5rem",
         backgroundColor: "transparent",
         color: "$white",
         border: 0,

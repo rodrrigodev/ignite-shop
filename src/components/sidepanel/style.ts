@@ -38,8 +38,7 @@ export const SidePanelContainer = styled("div", {
     padding: "3rem 2rem 1rem",
   },
   
-  whiteSpace: "nowrap"
-
+  whiteSpace: "nowrap",
 })
 
 export const CartHeader = styled("header",{
@@ -94,6 +93,9 @@ export const ProductDescription = styled("div", {
     fontSize: "1.2rem",
     color: "$gray300",
     lineHeight: 1.6,
+    '@media (max-width: 320px)':{
+      fontSize: "1rem"
+  },
   },
 
   span: {
